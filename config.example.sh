@@ -34,11 +34,12 @@ VM_SKU="Standard_B2s"                # VM size - see Azure VM sizes documentatio
 VM_IMAGE="Ubuntu2204"                # Options: Ubuntu2204, Ubuntu2004, Win2022Datacenter, etc.
 VM_ADMIN_USERNAME="azureuser"
 
-# Common VM SKU Options:
-# - Standard_B1s   : 1 vCPU, 1 GB RAM (cheapest, ~$8/month)
-# - Standard_B2s   : 2 vCPU, 4 GB RAM (recommended for dev/test, ~$30/month)
-# - Standard_D2s_v3: 2 vCPU, 8 GB RAM (general purpose, ~$70/month)
-# - Standard_D4s_v3: 4 vCPU, 16 GB RAM (more powerful, ~$140/month)
+# Common VM SKU Options (prices are approximate as of 2024 and may vary by region):
+# - Standard_B1s   : 1 vCPU, 1 GB RAM (cheapest)
+# - Standard_B2s   : 2 vCPU, 4 GB RAM (recommended for dev/test)
+# - Standard_D2s_v3: 2 vCPU, 8 GB RAM (general purpose)
+# - Standard_D4s_v3: 4 vCPU, 16 GB RAM (more powerful)
+# For current pricing, see: https://azure.microsoft.com/pricing/details/virtual-machines/
 
 # ============================================================================
 # Network Security Group

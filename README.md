@@ -195,14 +195,16 @@ az network bastion ssh \
 
 ## 💰 Cost Considerations
 
+**Note**: The following costs are approximate estimates as of 2024 for the East US region and may vary based on usage patterns, region, and Azure pricing changes. For current pricing, use the [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/).
+
 Approximate monthly costs (East US region):
 
-- **Standard_B2s VM**: ~$30/month
+- **Standard_B2s VM**: ~$30-35/month
 - **Azure Bastion (Basic)**: ~$140/month
 - **Storage (128 GB SSD)**: ~$10/month
 - **VNets & Peering**: ~$5/month
 
-**Total**: ~$185/month
+**Estimated Total**: ~$185-190/month
 
 💡 **Tip**: Delete resources when not in use to save costs!
 

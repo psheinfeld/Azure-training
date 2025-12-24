@@ -148,6 +148,9 @@ az vm create \
     --nsg "" \
     --output table
 
+# Note: --public-ip-address "" disables public IP creation (access via Bastion only)
+# Note: --nsg "" prevents automatic NSG creation (we manually created and associated NSG)
+
 echo ""
 
 # ============================================================================
@@ -243,11 +246,15 @@ echo "  - VNet CIDR: $VNET1_CIDR"
 echo "  - Subnet Name: $SUBNET1_NAME"
 echo "  - Subnet CIDR: $SUBNET1_CIDR"
 echo ""
+
+# Retrieve VM private IP
+VM_PRIVATE_IP=$(az vm show -d -g "$RESOURCE_GROUP" -n "$VM_NAME" --query privateIps -o tsv 2>/dev/null || echo "N/A")
+
 echo "Virtual Machine:"
 echo "  - VM Name: $VM_NAME"
 echo "  - VM SKU: $VM_SKU"
 echo "  - Admin Username: $VM_ADMIN_USERNAME"
-echo "  - Private IP: $(az vm show -d -g "$RESOURCE_GROUP" -n "$VM_NAME" --query privateIps -o tsv)"
+echo "  - Private IP: $VM_PRIVATE_IP"
 echo ""
 echo "Second VNet (Bastion VNet):"
 echo "  - VNet Name: $VNET2_NAME"
@@ -258,9 +265,13 @@ echo ""
 echo "VNet Peering:"
 echo "  - $VNET1_NAME <-> $VNET2_NAME (Connected)"
 echo ""
+
+# Retrieve Bastion public IP
+BASTION_PUBLIC_IP=$(az network public-ip show -g "$RESOURCE_GROUP" -n "$BASTION_PUBLIC_IP_NAME" --query ipAddress -o tsv 2>/dev/null || echo "N/A")
+
 echo "Azure Bastion:"
 echo "  - Bastion Name: $BASTION_NAME"
-echo "  - Bastion Public IP: $(az network public-ip show -g "$RESOURCE_GROUP" -n "$BASTION_PUBLIC_IP_NAME" --query ipAddress -o tsv)"
+echo "  - Bastion Public IP: $BASTION_PUBLIC_IP"
 echo ""
 echo "============================================"
 echo "Deployment completed successfully!"
